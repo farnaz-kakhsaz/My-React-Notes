@@ -6,19 +6,19 @@
 
 ## Table of Contents:
 
-- [NVM](#**NVM:**)
-- [NPM](#**NPM:**)
-- [NPX](#**NPX:**)
+- [NVM](#NVM:)
+- [NPM](#NPM:)
+- [NPX](#NPX:)
 
 ---
 
 ## Difference between **NVM**, **NPX** and **NPM**:
 
-### **NVM:**
+### NVM:
 
 Stand for **N**ode **V**ersion **M**anager, and it's a tool to manage and switch between versions of **Node** very easily. But it's also useful to easily install or upgrade the current version of **Node**.
 
-### **NPM:**
+### NPM:
 
 The **npm** stands for **N**ode **P**ackage **M**anager and it is the default package manager for **Node.js**. It is written entirely in **JavaScript**, it was initially released on January 12, 2010. The **npm** manages all the packages and modules for **Node.js** and consists of command–line client **npm**. It gets installed into the system with the **installation of Node.js**. The required packages and modules in the Node project are installed using **npm**. A package contains all the files needed for a module and modules are the JavaScript libraries that can be included in the Node project according to the requirement of the project.
 It provides a way for developers to install packages both globally and locally.
@@ -49,7 +49,7 @@ It provides a way for developers to install packages both globally and locally.
 npm run your-package-name
 ```
 
-### **NPX:**
+### NPX:
 
 The npx stands for **N**ode **P**ackage e**X**ecute and it comes with the npm, when you installed npm **above 5.2.0** version then automatically npx will installed. **It is an npm package runner that can execute any package that you want from the npm registry without even installing that package.** The npx is useful during a single time use package. If you have installed npm below 5.2.0 then npx is not installed in your system. You can check npx is installed or not by running the following command:
 
