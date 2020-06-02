@@ -7,14 +7,14 @@
 ## Table of Contents:
 
 - [NVM](#NVM)
-- [NPM](#NPM:)
-- [NPX](#NPX:)
+- [NPM](#NPM)
+- [NPX](#NPX)
 
 ---
 
 ## Difference between **NVM**, **NPX** and **NPM**:
 
-### NVM
+### **NVM**
 
 Stand for **N**ode **V**ersion **M**anager, and it's a tool to manage and switch between versions of **Node** very easily. But it's also useful to easily install or upgrade the current version of **Node**.
 
