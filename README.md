@@ -10,7 +10,7 @@
 - [NPM](#NPM)
 - [NPX](#NPX)
 - [What is NPM and Yarn?](#what-is-npm-and-yarn)
-- [What is a **Script**?](#what-is-a-script)
+- [What is a **Script** and **`react-scripts`** in `create-react-app`?](#what-is-a-script-and-react-scripts-in-create-react-app)
 
 ---
 
@@ -87,9 +87,25 @@ That’s where npx comes in.
 
 ---
 
-## What is a **Script** is React?
+## What is NPM and Yarn?
 
-In programming, a script is basically a list of instructions that dictates to another program what to do.
+**NPM** and **Yarn** are both package managers. **Package Managers is essentially a way to automate the process of installing, upgrading, configuring or removing software.**
+
+We know that **Yarn** was created by Facebook as an alternative to **NPM**. They created **Yarn** to solve the problems they were having while using **NPM** particularly the problems with consistency, security and speed. **Yarn** has the same feature set while operating faster, more securely and most importantly more reliable.
+
+**NPM Version 5.0**: With their newest release if npm 5 many of the shortcomings of NPM were addressed.
+
+- NPM 5 introduced the `package-lock.json` file for better versioning control.
+
+- NPM 5 is now much faster, but Yarn still edges them out in terms of speed.
+
+- Now supports offline installation for previously downloaded packages.
+
+---
+
+## What is a **Script** and **`react-scripts`** in `create-react-app`?
+
+In programming, **a script is basically a list of instructions that dictates to another program what to do.**
 
 React is no exception; it has scripts to do things.
 `create-react-app` ships with four main scripts.
@@ -106,21 +122,5 @@ In React apps, scripts are located in the `package.json` file. This file has som
 ```
 
 As you can see, a fresh React app comes with four scripts that use the package `react-scripts`.
-
----
-
-## What is NPM and Yarn?
-
-**NPM** and **Yarn** are both package managers. **Package Managers is essentially a way to automate the process of installing, upgrading, configuring or removing software.**
-
-We know that **Yarn** was created by Facebook as an alternative to **NPM**. They created **Yarn** to solve the problems they were having while using **NPM** particularly the problems with consistency, security and speed. **Yarn** has the same feature set while operating faster, more securely and most importantly more reliable.
-
-**NPM Version 5.0**: With their newest release if npm 5 many of the shortcomings of NPM were addressed.
-
-- NPM 5 introduced the `package-lock.json` file for better versioning control.
-
-- NPM 5 is now much faster, but Yarn still edges them out in terms of speed.
-
-- Now supports offline installation for previously downloaded packages.
 
 ---
