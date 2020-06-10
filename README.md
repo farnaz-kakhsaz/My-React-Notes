@@ -12,7 +12,7 @@
 - [What is NPM and Yarn?](#what-is-npm-and-yarn)
 - [What is a **Script** and **`react-scripts`** in `create-react-app`?](#what-is-a-script-and-react-scripts-in-create-react-app)
 - [Single Page Application (SPA)](#single-page-application-spa)
-- [Why `setState` doesn't update the state immediately?](#why_setState_doesn't_update_the_state_immediately)
+- [Why `setState` doesn't update the state immediately?](#why-setstate-doesnt-update-the-state-immediately)
 
 ---
 
