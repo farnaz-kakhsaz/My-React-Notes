@@ -11,6 +11,7 @@
 - [NPX](#NPX)
 - [What is NPM and Yarn?](#what-is-npm-and-yarn)
 - [What is a **Script** and **`react-scripts`** in `create-react-app`?](#what-is-a-script-and-react-scripts-in-create-react-app)
+- [Single Page Application (SPA)](#single-page-application-spa)
 
 ---
 
@@ -122,5 +123,21 @@ In React apps, scripts are located in the `package.json` file. This file has som
 ```
 
 As you can see, a fresh React app comes with four scripts that use the package `react-scripts`.
+
+---
+
+## Single Page Application (SPA):
+
+With a single page application instead of requesting a page from the server, it's turned more into requesting for data. And this is when we have the ability to communicate with outside servers, maybe servers that we don't control like third-party servers (like Google Firebase database), or we might talk to some different API endpoints so that now we can communicate with different APIs, back and forth and using JavaScript just receive the data (Like what we do in JSONPlaceholder website. By entering into this website we don't get an HTML page, all we get is data that formatted in what we call `JSON`. So this `JSON` data can be converted into a JavaScript object that we can use).
+
+--
+
+A SPA application or website is a web software that downloads all the required content at the time you enter a website. They don't need to download it a dozen more times when you browse to different pages of this site.
+
+--
+
+A single-page application works in the browser and requires no page reloads and no extra time for waiting. The page doesn’t need to be updated since content is downloaded automatically. We use these types of applications every day. Just think of Facebook or Trello. These are excellent examples of single-page apps.
+
+SPAs use AJAX and HTML5 to build responsive apps. JavaScript frameworks such as Angular, React, Vue, and Ember are responsible for handling the heavy lifting on the client side for a single-page app.
 
 ---
