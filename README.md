@@ -218,8 +218,6 @@ For example, we can solve the below problem:
 
 ```JavaScript
 import React, { Component } from "react";
-import { CardList } from "./components/card-list/card-list.component";
-import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -227,10 +225,10 @@ class App extends Component {
     this.state = {
       count: 0,
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange() {
+  handleClick() {
     this.setState(
       (state) => ({
         count: state.count + 1,
@@ -245,7 +243,7 @@ class App extends Component {
       <div className="App">
         {console.log("Component renderd!")}
         <h1>{this.state.count}</h1>
-        <button onClick={this.handleChange}>Click to add!</button>
+        <button onClick={this.handleClick}>Click to add!</button>
       </div>
     );
   }
@@ -263,31 +261,44 @@ export default App;
 With async/await function:
 
 ```JavaScript
-  async onChangeState(event) {
-    const { value } = event.target;
-    await this.setState({ searchField: value }, () =>
-      console.log(1)
-    );
-    console.log(2);
+import React, { Component } from "react";
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-    render() {
+  handleClick() {
+    this.setState(
+      (state) => ({
+        count: state.count + 1,
+      }),
+      () => console.log("Count value in callback:", this.state.count)
+    );
+    console.log("Count value next line:", this.state.count);
+  }
+
+  render() {
     return (
       <div className="App">
-        {console.log(3)}
-        <input
-          type="search"
-          placeholder="search monsters"
-          onChange={this.onChangeState}
-        />
+        {console.log("Component renderd!")}
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleClick}>Click to add!</button>
       </div>
     );
   }
+}
 
-// Output:
-// 3
-// 1
-// 2
+export default App;
+
+// Component renderd!
+// Component renderd!
+// Count value in callback: 1
+// Count value next line: 1
 ```
 
 But do **NOT** use it in your project. Because I'm not aware of consequences it (if there was). So this is only for education purpose.
