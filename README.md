@@ -217,31 +217,47 @@ I was thinking if `setState` in React is asynchronous (which is), so I can use a
 For example, we can solve the below problem:
 
 ```JavaScript
-  onChangeState(event) {
-    const { value } = event.target;
-    this.setState({ searchField: value }, () =>
-      console.log(1)
-    );
-    console.log(2);
+import React, { Component } from "react";
+import { CardList } from "./components/card-list/card-list.component";
+import "./App.css";
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    };
+    this.handleChange = this.handleChange.bind(this);
   }
 
-    render() {
+  handleChange() {
+    this.setState(
+      (state) => ({
+        count: state.count + 1,
+      }),
+      () => console.log("Count value in callback:", this.state.count)
+    );
+    console.log("Count value next line:", this.state.count);
+  }
+
+  render() {
     return (
       <div className="App">
-        {console.log(3)}
-        <input
-          type="search"
-          placeholder="search monsters"
-          onChange={this.onChangeState}
-        />
+        {console.log("Component renderd!")}
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleChange}>Click to add!</button>
       </div>
     );
   }
+}
+
+export default App;
 
 // Output:
-// 2
-// 3
-// 1
+// Count value next line: 0
+// Component renderd!
+// Component renderd!
+// Count value in callback: 1
 ```
 
 With async/await function:
