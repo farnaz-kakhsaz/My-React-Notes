@@ -13,7 +13,7 @@
 - [What is a **Script** and **`react-scripts`** in `create-react-app`?](#what-is-a-script-and-react-scripts-in-create-react-app)
 - [Single Page Application (SPA)](#single-page-application-spa)
 - [Why `setState` doesn't update the state immediately?](#why-setstate-doesnt-update-the-state-immediately)
-- (What is `package-lock.json`?)[#what-is-package-lock.json]
+- [What is `package-lock.json`?](#what-is-package-lockjson)
 
 ---
 
@@ -330,7 +330,7 @@ Includes version which breaks stuff. It can include removing APIs or changing na
 
 ### Package.json
 
-`package.json` is a file that contains information about your project (name, version, etc) and it lists the packages that your project is dependent on.
+The `package.json` is a file that contains information about your project (name, version, etc) and it lists the packages that your project is dependent on.
 
 ![package.json](https://res.cloudinary.com/practicaldev/image/fetch/s--m2oVg4vL--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/btvz35yyxvrj4tsbmpzl.png)
 
@@ -346,10 +346,12 @@ So npm later released a new file called `package-lock.json` to avoid such scenar
 
 ### package-lock.json
 
-**`package-lock.json` will simply avoid this general behavior of installing updated minor version so when someone clones your repo and runs `npm install` in their machine. NPM will look into `package-lock.json` and install exact versions of the package as the owner has installed so it will ignore the `^` and `~` from `package.json`.**
+**The `package-lock.json` will simply avoid this general behavior of installing updated minor version so when someone clones your repo and runs `npm install` in their machine. NPM will look into `package-lock.json` and install exact versions of the package as the owner has installed so it will ignore the `^` and `~` from `package.json`.**
 
 **Also, it contains some other meta information which saves time of fetching that data from npm while you do `npm install`.**
 
 You can refer [npm blog](https://docs.npmjs.com/files/package-lock.json) for some more information on `package-lock.json`.
 
 Article source: [dev.to](https://dev.to/saurabhdaware/but-what-the-hell-is-package-lock-json-b04)
+
+---
