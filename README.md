@@ -13,6 +13,7 @@
 - [What is a **Script** and **`react-scripts`** in `create-react-app`?](#what-is-a-script-and-react-scripts-in-create-react-app)
 - [Single Page Application (SPA)](#single-page-application-spa)
 - [Why `setState` doesn't update the state immediately?](#why-setstate-doesnt-update-the-state-immediately)
+- (What is `package-lock.json`?)[#what-is-package-lock.json]
 
 ---
 
@@ -304,3 +305,51 @@ export default App;
 But do **NOT** use it in your project. Because I'm not aware of consequences it (if there was). So this is only for education purpose.
 
 ---
+
+## What is `package-lock.json`?
+
+So before we get into `package-lock.json` let's talk about semantic versioning and `package.json`.
+
+### Semantic Versioning
+
+Semantic versioning or SemVer is the ideal way of versioning packages. They are usually written like `1.4.5` (major.minor.patch)
+
+![Semantic versioning (SemVer)](https://res.cloudinary.com/practicaldev/image/fetch/s--vTMVK06i--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/uyw4yois1mkqr967ufb8.png)
+
+#### Bug fix/patch version
+
+Includes bug fixes/documentation spelling mistakes etc.
+
+#### Minor version
+
+Includes additions of functions or API which does not break anything from the older versions So anything that runs on `v1.1.0` should work on `v1.9.0` as well.
+
+#### Major version
+
+Includes version which breaks stuff. It can include removing APIs or changing names of functions so anything that works on `v1.0.0` may not necessarily work on `v2.0.0`.
+
+### Package.json
+
+`package.json` is a file that contains information about your project (name, version, etc) and it lists the packages that your project is dependent on.
+
+![package.json](https://res.cloudinary.com/practicaldev/image/fetch/s--m2oVg4vL--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/btvz35yyxvrj4tsbmpzl.png)
+
+So as you can see in the picture above after every dependency listed under `package.json` there's a number something like `^2.20.0` which is the version of that package but before the version, there is `^`. So `^` this little guy can be a total destroyer for your project.
+
+**The `^` sign before the version tells npm that if someone clones the project and runs `npm install` in the directory then install the latest minor version of the package in his `node_modules`.**
+
+So lets say I am having express with `^2.20.0` in `package.json` and then express team releases version `2.24.0` and now when someone clones my repo and runs `npm install` in that directory they will get the version `2.24.0` **(You can also put `~` instead of `^` it will update to latest patch version)**.
+
+However, this can be a huge issue if package developers break any of the functions on the minor version as it can make your application break down.
+
+So npm later released a new file called `package-lock.json` to avoid such scenarios.
+
+### package-lock.json
+
+**`package-lock.json` will simply avoid this general behavior of installing updated minor version so when someone clones your repo and runs `npm install` in their machine. NPM will look into `package-lock.json` and install exact versions of the package as the owner has installed so it will ignore the `^` and `~` from `package.json`.**
+
+**Also, it contains some other meta information which saves time of fetching that data from npm while you do `npm install`.**
+
+You can refer [npm blog](https://docs.npmjs.com/files/package-lock.json) for some more information on `package-lock.json`.
+
+Article source: [dev.to](https://dev.to/saurabhdaware/but-what-the-hell-is-package-lock-json-b04)
