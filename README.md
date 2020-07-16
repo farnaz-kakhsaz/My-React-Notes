@@ -6,14 +6,12 @@
 
 ## Table of Contents:
 
-- [NVM](#NVM)
-- [NPM](#NPM)
-- [NPX](#NPX)
+- [Difference between **NVM**, **NPX** and **NPM**](difference-between-nvm-npx-and-npm)
 - [What is NPM and Yarn?](#what-is-npm-and-yarn)
 - [What is a **Script** and **`react-scripts`** in `create-react-app`?](#what-is-a-script-and-react-scripts-in-create-react-app)
 - [Single Page Application (SPA)](#single-page-application-spa)
-- [Why `setState` doesn't update the state immediately?](#why-setstate-doesnt-update-the-state-immediately)
-- [What is `package-lock.json`?](#what-is-package-lockjson)
+- [Why **`setState`** doesn't update the state immediately?](#why-setstate-doesnt-update-the-state-immediately)
+- [What is **`package-lock.json`**?](#what-is-package-lockjson)
 
 ---
 
@@ -144,7 +142,7 @@ SPAs use AJAX and HTML5 to build responsive apps. JavaScript frameworks such as 
 
 ---
 
-## Why `setState` doesn't update the state immediately?
+## Why **`setState`** doesn't update the state immediately?
 
 > `setState()` enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state. This is the primary method you use to update the user interface in response to event handlers and server responses.
 >
@@ -306,7 +304,7 @@ But do **NOT** use it in your project. Because I'm not aware of consequences it 
 
 ---
 
-## What is `package-lock.json`?
+## What is **`package-lock.json`**?
 
 So before we get into `package-lock.json` let's talk about semantic versioning and `package.json`.
 
@@ -353,5 +351,205 @@ So npm later released a new file called `package-lock.json` to avoid such scenar
 You can refer [npm blog](https://docs.npmjs.com/files/package-lock.json) for some more information on `package-lock.json`.
 
 Article source: [dev.to](https://dev.to/saurabhdaware/but-what-the-hell-is-package-lock-json-b04)
+
+---
+
+## React Router (Client-Side Routing):
+
+**React Router** is the de facto standard routing library for React. When you need to navigate through a React application with multiple views, you’ll need a router to manage the URLs. React Router takes care of that, keeping your application UI and the URL in sync.
+
+React is a popular library for creating single-page applications (SPAs) that are rendered on the client side. An SPA might have multiple **views** (aka **pages**), and unlike the conventional multi-page apps, navigating through these views shouldn’t result in the entire page being reloaded. Instead, we want the views to be rendered inline within the current page.
+
+**Routing** is the process of keeping the browser URL in sync with what’s being rendered on the page.
+
+### Conventional Routing
+
+In general, when the user types an URL in the browser, an HTTP request is sent to the server, which then retrieves the HTML page. For each _new URL_, the user is redirected to a **new** HTML page. You can refer to the below diagram to get a better understanding of how Routing works.
+
+![Routing Diagram](https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2017/09/routing_blog.png)
+
+Article source: [edureka.co](https://www.edureka.co/blog/react-router/)
+
+### Routing In React
+
+In React, there is only a **single** ‘Html’ file involved. Whenever a user types in a **new** URL request, instead of fetching data from the server, the Router swaps in a different **Component** for each new URL request. The user is tricked into switching among multiple pages but in reality, each separate **Component re-renders** achieving multiple views as per our needs.
+
+How does React achieve this?
+
+This is where the concept of **‘History’** comes into the picture. In React, the Router looks at the History of each **Component** and when there is any change in the History, that **Component** re-renders. **Until Router version 4 we had to _manually_ set the _History_ value. However, from Router v4 the base path is bypassed by the <BrowserRouter> saving us a lot of work.** If you still need to access History, HTML5 offers a built-in API which allows us to modify the **History** object through **pushState** and **replaceState** methods.
+
+### Benefits Of React Router v4
+
+We essentially want to call the Router Component inside React’s render method. This is because the entire Router API is all about Components. Of course, each Component’s role is to render UI just as any React application.
+
+### `<Switch>`
+
+Renders the first child `<Route>` or `<Redirect>` that matches the location.
+
+**How is this different than just using a bunch of <Route>s?**
+
+`<Switch>` is unique in that it renders a route _exclusively_. In contrast, every `<Route>` that matches the location renders _inclusively_. Consider these routes:
+
+```JavaScript
+import { Route } from "react-router";
+
+let routes = (
+  <div>
+    <Route path="/about">
+      <About />
+    </Route>
+    <Route path="/:user">
+      <User />
+    </Route>
+    <Route>
+      <NoMatch />
+    </Route>
+  </div>
+);
+```
+
+If the URL is `/about`, then `<About>`, `<User>`, and `<NoMatch>` will all render because they all match the path. This is by design, allowing us to compose `<Route>`s into our apps in many ways, like sidebars and breadcrumbs, bootstrap tabs, etc.
+
+Occasionally, however, we want to pick only one `<Route>` to render. If we’re at `/about` we don’t want to also match `/:user` (or show our “404” page). Here’s how to do it with **Switch**:
+
+```JavaScript
+import { Route, Switch } from "react-router";
+
+let routes = (
+  <Switch>
+    <Route exact path="/">
+      <Home />
+    </Route>
+    <Route path="/about">
+      <About />
+    </Route>
+    <Route path="/:user">
+      <User />
+    </Route>
+    <Route>
+      <NoMatch />
+    </Route>
+  </Switch>
+);
+```
+
+Now, if we’re at `/about`, `<Switch>` will start looking for a matching `<Route>`. `<Route path="/about"/>` will match and `<Switch>` will stop looking for matches and render `<About>`. Similarly, if we’re at `/michael` then `<User>` will render.
+
+This is also useful for animated transitions since the matched `<Route>` is rendered in the same position as the previous one.
+
+```JavaScript
+let routes = (
+  <Fade>
+    <Switch>
+      {/* there will only ever be one child here */}
+      <Route />
+      <Route />
+    </Switch>
+  </Fade>
+);
+
+let routes = (
+  <Fade>
+    {/* there will always be two children here,
+        one might render null though, making transitions
+        a bit more cumbersome to work out */}
+    <Route />
+    <Route />
+  </Fade>
+);
+```
+
+### location: object
+
+A **location** object to be used for matching children elements instead of the current history location (usually the current browser URL).
+
+### children: node
+
+**All children of a `<Switch>` should be `<Route>` or `<Redirect>` elements. Only the first child to match the current location will be rendered.**
+
+`<Route>` elements are matched using their path prop and `<Redirect>` elements are matched using their from prop. A `<Route>` with no path prop or a `<Redirect>` with no from prop will always match the current location.
+
+When you include a `<Redirect>` in a `<Switch>`, it can use any of the `<Route>`'s location matching props: path, exact, and strict. from is just an alias for the path prop.
+
+If a location prop is given to the `<Switch>`, it will override the location prop on the matching child element.
+
+```JavaScript
+import { Redirect, Route, Switch } from "react-router";
+
+let routes = (
+  <Switch>
+    <Route exact path="/">
+      <Home />
+    </Route>
+
+    <Route path="/users">
+      <Users />
+    </Route>
+    <Redirect from="/accounts" to="/users" />
+
+    <Route>
+      <NoMatch />
+    </Route>
+  </Switch>
+);
+```
+
+### <Route>
+
+The Route component is perhaps the most important component in React Router to understand and learn to use well. **Its most basic responsibility is to render some UI when its path matches the current URL.**
+
+Consider the following code:
+
+```JavaScript
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+ReactDOM.render(
+  <Router>
+    <div>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/news">
+        <NewsFeed />
+      </Route>
+    </div>
+  </Router>,
+  node
+);
+```
+
+If the location of the app is `/` then the UI hierarchy will be something like:
+
+```JavaScript
+<div>
+  <Home />
+  <!-- react-empty: 2 -->
+</div>
+```
+
+And if the location of the app is `/news` then the UI hierarchy will be:
+
+```JavaScript
+<div>
+  <!-- react-empty: 1 -->
+  <NewsFeed />
+</div>
+```
+
+The `“react-empty”` comments are just implementation details of React’s `null` rendering. But for our purposes, it is instructive. **A Route is always technically `“rendered”` even though its rendering `null`. When the `<Route>`'s path matches the current URL, it renders its children (your component).**
+
+If the same component is used as the child of multiple `<Route>`s at the same point in the component tree, React will see this as the same component instance and the component’s state will be preserved between route changes. If this isn’t desired, a unique key prop added to each route component will cause React to recreate the component instance when the route changes.
+
+### Route render methods
+
+match
+A match object contains information about how a <Route path> matched the URL. match objects contain the following properties:
+
+params - (object) Key/value pairs parsed from the URL corresponding to the dynamic segments of the path
+isExact - (boolean) true if the entire URL was matched (no trailing characters)
+path - (string) The path pattern used to match. Useful for building nested <Route>s
+url - (string) The matched portion of the URL. Useful for building nested <Link>s
 
 ---
