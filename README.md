@@ -553,3 +553,18 @@ path - (string) The path pattern used to match. Useful for building nested <Rout
 url - (string) The matched portion of the URL. Useful for building nested <Link>s
 
 ---
+
+## What is OAuth:
+
+First of all, you can guess from the name, **OAuth** has something to do with Auth. The question is does the Auth here mean authentication or authorization?
+
+![Difference between Authentication and Authorization](https://media.geeksforgeeks.org/wp-content/uploads/20190606141632/Untitled-Diagram-2019-06-06T141540.818.png)
+
+**In simple terms, authentication is the process of verifying who a user is, while authorization is the process of verifying what they have access to.**
+
+**The short answer is OAuth is meant for authorization and not authentication.** Also more importantly OAuth originally created not for a service to authorize a person, it was meant for a service to authorize another service. Now you might say come on, why would a service wanna authorized with another service?
+
+OAuth solves the problem of services trying to access each other on behalf of the user, there was the standard created called OAuth. There was a version 1.0 of the standard, but the current version is the most widely used this is OAuth 2.0 (Latest version and most widely used).
+
+--
+**The OAuth allows users to sign in with any other third party service that they mighy already have.**
