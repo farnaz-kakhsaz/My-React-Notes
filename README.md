@@ -12,6 +12,8 @@
 - [Single Page Application (SPA)](#single-page-application-spa)
 - [Why **`setState`** doesn't update the state immediately?](#why-setstate-doesnt-update-the-state-immediately)
 - [What is **`package-lock.json`**?](#what-is-package-lockjson)
+- [React Router (Client-Side Routing)](#react-router-client-side-routing)
+- [What is OAuth?](#what-is-oauth)
 
 ---
 
@@ -554,7 +556,7 @@ url - (string) The matched portion of the URL. Useful for building nested <Link>
 
 ---
 
-## What is OAuth:
+## What is OAuth?
 
 First of all, you can guess from the name, **OAuth** has something to do with Auth. The question is does the Auth here mean authentication or authorization?
 
@@ -568,3 +570,18 @@ OAuth solves the problem of services trying to access each other on behalf of th
 
 --
 **The OAuth allows users to sign in with any other third party service that they mighy already have.**
+
+---
+
+## What is Prop Drilling?
+
+**Prop drilling is a phenomena in React that happens when props are passed down multiple levels in a React component hierarchy and components in between are not interested in this props, so they just pass it along to the next child component.** This problem can happen when using only React state as global state and your application's component hierarchy grows vertically. However, there are two techniques to prevent the prop drilling phenomena until there is really no way around a proper state management library such as Redux or MobX. You can read more about these techniques over here:
+
+- [React Slot Pattern](https://github.com/the-road-to-learn-react/react-slot-pattern-example)
+- [React's Context API](https://www.robinwieruch.de/react-context)
+
+However, while the React Slot Pattern is a great way to advance your React application, React's Context API shouldn't be exploited as sophisticated state management layer. It is only a way to pass props from a parent component to grandchild components without having to pass the props through all child components.
+
+You have seen how global state can be used in React without having a state management library such as Redux or MobX in place. In smaller applications you can use a top level component for it; in larger applications you can use multiple page components. Once your applications grows vertically in size, you can deploy different techniques in React to overcome the shortcoming of the prop drilling phenomena. However, at some point your application may become too large for React alone being able to manage the global state. There are simply to many props to be passed down the component hierarchy. That's when you would opt-in a library such as Redux.
+
+---
