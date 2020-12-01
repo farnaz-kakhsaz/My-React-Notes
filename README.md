@@ -6,7 +6,7 @@
 
 ## Table of Contents:
 
-- [Difference between **NVM**, **NPX** and **NPM**](difference-between-nvm-npx-and-npm)
+- [Difference between **NVM**, **NPX** and **NPM**](#difference-between-nvm-npx-and-npm)
 - [What is NPM and Yarn?](#what-is-npm-and-yarn)
 - [What is a **Script** and **`react-scripts`** in `create-react-app`?](#what-is-a-script-and-react-scripts-in-create-react-app)
 - [Single Page Application (SPA)](#single-page-application-spa)
